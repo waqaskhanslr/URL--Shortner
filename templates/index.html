@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    
+    html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    body {
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(45deg, #8700ffb5 0%, #8700ff24 99%, #8700ff00 100%);
+    }
+    
+    .url-short {
+        width: fit-content;
+    height: 90%;
+    display: flex;
+    background:linear-gradient(white, white) padding-box, linear-gradient(321deg, #8700ff00, #8700ff, #8700ff00) border-box;
+    border: 4px solid transparent;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: aliceblue;
+    border-radius: 15px;
+    }
+    
+    .upper-section {
+        display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    width: 100%;
+    border-radius: 15px;
+    height: 100%;
+    padding: 3vw 6vw;
+    background: white;
+    }
+    
+    .main-nav {
+        width: 100%;
+        min-width: fit-content;
+        gap: 1rem;
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-topic {
+        display: flex;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    }
+    
+    .nav-topic a {
+        text-decoration: none;
+    
+    font-size: 1rem;
+    border-radius: 50px;
+    background-color: #8700ff;
+    color:aliceblue;
+    width: fit-content;
+    padding: 0 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-weight: 700;
+        
+    }
+     .nav-topic a .fa-solid{
+        font-size: 1rem;
+    }
+    
+    .nav-topic a:hover{
+        transform: scale(1.1);
+    }
+    
+    .nav-heading {
+        color: aliceblue;
+        gap: .5rem;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-section {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+ 
+    }
+    
+    .heading-hero {
+        color: aliceblue;
+        font-size: 1rem;
+        text-transform: capitalize;
+        font-weight: 400;
+    }
+    
+    .input-section {
+        width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #8700ff29;
+    padding: 3rem;
+    border-radius: 1rem;
+    position: relative;
+    }
+    
+    label {
+        padding-bottom: 0.5rem;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.671);
+        padding-top: 0.5rem;
+    }
+    h1 {
+        width: 100%;
+        min-width: fit-content;
+        color: rgba(0, 0, 0, 0.671);
+    }
+    input.url {
+        height: 5vh;
+    border-radius: 0.5rem;
+    background: #8700ff0a;
+    border: 2px solid #0000000f;
+    padding: 0.2rem 1rem;
+    outline-color: #8700ff;
+    margin-bottom: .5rem;
+    }
+    
+    .gen-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .gen-btn button {
+        height: 3rem;
+    width: 10rem;
+    background: #8700ff;
+    border-radius: 50px;
+    color: white;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    }
+       
+    .gen-btn button:hover {
+    
+        transform: scale(1.1);
+    }
+    @media (max-width:809px) {
+        .url-short 
+        {
+            width: 90%;
+            height: fit-content;
+        }
+     
+        .hero-section{
+            padding-top: 2rem;
+        } 
+        .main-nav{
+            width: fit-content;
+            gap:2rem;
+        }
+        .nav-topic{
+            width: fit-content;
+            height: fit-content;
+            gap:1rem;
+        }
+        .nav-topic a{
+            width: 3rem;
+            height: 2rem;
+            font-size: 0.5rem;
+            padding: 0.5rem;
+            gap:0.3rem;
+        }
+        .nav-topic a .fa-solid {
+            font-size: 0.5rem;
+        }
+        .nav-heading {
+            display: flex;
+        font-size: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        }
+        .gen-btn button{
+            width: fit-content;
+        height: fit-content;
+        font-size: 3vw;
+        padding: .8rem 1.5rem;
+        }
+        label{
+            font-size: 0.8rem;
+        }
+        .heading-hero{
+            font-size: 0.8rem;
+        }
+    }
+    @media (max-width:591px) {
+        .main-nav{
+            width: fit-content;
+            gap: 1rem;
+        }
+        .nav-heading h1{
+            font-size: 1rem;
+        }
+        .nav-topic a{
+            width: 2.5rem;
+            height: 1.5rem;
+            border-radius: 0.2rem;
+            padding: 0.5rem;
+            font-size: 0.5rem;
+        }
+        .nav-heading h1{
+            width: fit-content;
+            height: fit-content;
+            font-size: 0.7rem;
+        }
+        element.style{
+            width: 20px;
+            height: 20px;
+        }
+    }
+    @media (max-width:617px) {
+        input.url 
+        {
+            border-radius: 5px;
+            height: 4vh;
+        }
+        .input-section{
+            padding: 1.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+    
+        .hero-section{
+            justify-content: flex-start;
+            padding: 2rem 0;
+        }
+        .main-nav {
+            gap: 1rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: fit-content;
+        }
+        .nav-topic a{
+            width: fit-content;
+        height: fit-content;
+        border-radius: 50px;
+        padding: .8rem 1.5rem;
+        font-size: 3vw;
+        }
+        .heading-hero{
+            display: none;
+        }
+        .nav-heading h1{
+            font-size: 0.8rem;
+        }
+    
+    }
+    @media (max-height:562px) {
+        .hero-section{
+            gap:0.5rem;
+            padding-top: 1rem;
+        }
+        .gen-btn button{
+            height: 1rem;
+            border-radius: 0;
+        }
+        .input-section{
+            padding: 0.5rem;
+        }
+        input.url{
+            height: 1.5rem;
+        }
+        
+    }
+    @media (max-width:392px) {
+        .nav-topic a{
+            padding: 0.8rem 5vw;
+        }
+    }
+</style>
+</head>
+<body>
+    <section class="url-short">
+        <div class="upper-section">
+            <nav class="main-nav">
+                <div class="nav-heading">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/ezjqphcn.json"
+                        trigger="loop"
+                        delay="1500"
+                        state="in-reveal"
+                        style="width:50px;height:50px">
+                    </lord-icon>
+                    <h1>Getly Url</h1>
+                </div>
+                <div class="nav-topic">
+                    <a href="#" id="copy-btn">Copy<i class="fa-solid fa-copy"></i></a>
+                    <a href="#" id="share-btn">Share<i class="fa-solid fa-share"></i></a>
+                    <a href="#" id="open-btn">Open<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </nav>
+            <div class="hero-section">
+                <div class="heading-hero">
+                    <h1>URL Shortener</h1>
+                </div>
+                <div class="input-section">         
+                    <label for="url">Enter your URL</label>
+                    <input type="text" placeholder="Paste your URL" class="url" id="url" name="url">
+                    <label for="url-short">Shortened URL</label>
+                    <input type="text" class="url" id="url-short" name="url-short" disabled>                
+                </div>
+                <div class="gen-btn">
+                    <button id="shorten-btn">Shorten</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script>
+        document.getElementById('shorten-btn').addEventListener('click', function() {
+            const url = document.getElementById('url').value;
+
+            fetch('/shorten', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ 'url': url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('url-short').value = data.short_url;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const shortUrl = document.getElementById('url-short').value;
+            if (shortUrl) {
+                navigator.clipboard.writeText(shortUrl)
+                    .then(() => {
+                        alert('Shortened URL copied to clipboard!');
+                    })
+                    .catch(err => {
+                        console.error('Error copying text: ', err);
+                    });
+            } else {
+                alert('Please shorten a URL first!');
+            }
+        });
+
+        document.getElementById('share-btn').addEventListener('click', function() {
+            const shortUrl = document.getElementById('url-short').value;
+            if (shortUrl) {
+                navigator.share({
+                    title: 'Check out this shortened URL!',
+                    url: shortUrl
+                })
+                .then(() => console.log('Share successful'))
+                .catch(err => console.error('Error sharing: ', err));
+            } else {
+                alert('Please shorten a URL first!');
+            }
+        });
+
+        document.getElementById('open-btn').addEventListener('click', function() {
+            const shortUrl = document.getElementById('url-short').value;
+            if (shortUrl) {
+                window.open(shortUrl, '_blank');
+            } else {
+                alert('Please shorten a URL first!');
+            }
+        });
+    </script>
+</body>
+</html>
